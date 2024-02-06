@@ -1,9 +1,10 @@
 [package]
 name = "fortnite-api"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "A library for interacting with the Fortnite API"
 license = "MIT"
+repository = "https://github.com/raimannma/fortnite-api"
 
 [profile.release]
 strip = true  # Automatically strip symbols from the binary.
