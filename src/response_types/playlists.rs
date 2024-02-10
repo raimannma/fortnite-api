@@ -7,7 +7,7 @@ pub type PlaylistsV1 = Vec<PlaylistV1>;
 #[serde(rename_all = "camelCase")]
 pub struct PlaylistV1 {
     pub id: String,
-    pub name: String,
+    pub name: Option<String>,
     pub sub_name: Option<String>,
     pub description: Option<String>,
     pub game_type: Option<PlaylistGameType>,

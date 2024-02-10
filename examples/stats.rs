@@ -2,6 +2,7 @@ use fortnite_api::response_types::stats::{StatsAccountType, StatsImage, StatsTim
 
 #[tokio::main]
 async fn main() {
+    dotenv::dotenv().ok();
     let http_client = reqwest::Client::new();
     let api_key = std::env::var("FORTNITE_API_KEY")
         .expect("Please set the FORTNITE_API_KEY environment variable");

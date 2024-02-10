@@ -41,7 +41,7 @@ pub struct ShopFeaturedEntry {
     pub display_asset_path: Option<String>,
     pub tile_size: String,
     pub new_display_asset_path: String,
-    pub new_display_asset: ShopFeaturedEntryDisplayAsset,
+    pub new_display_asset: Option<ShopFeaturedEntryDisplayAsset>,
     pub items: CosmeticsV2,
 }
 
@@ -86,7 +86,7 @@ pub struct ShopFeaturedEntryDisplayAssetMaterialInstance {
     pub id: String,
     pub primary_mode: String,
     pub images: ShopFeaturedEntryDisplayAssetMaterialInstanceImages,
-    pub colors: ShopFeaturedEntryDisplayAssetMaterialInstanceColors,
+    pub colors: Option<ShopFeaturedEntryDisplayAssetMaterialInstanceColors>,
     pub scalings: HashMap<String, f64>,
     // pub flags: Option<_>,
 }
@@ -95,7 +95,7 @@ pub struct ShopFeaturedEntryDisplayAssetMaterialInstance {
 #[serde(rename_all = "PascalCase")]
 pub struct ShopFeaturedEntryDisplayAssetMaterialInstanceImages {
     pub offer_image: String,
-    pub background: String,
+    pub background: Option<String>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone, Eq, PartialEq, Hash)]
