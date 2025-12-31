@@ -21,7 +21,7 @@
 //!     let http_client = reqwest::Client::new();
 //!
 //!     let result = fortnite_api::get_news_v2(&http_client, None).await;
-//!     println!("Result: {:#?}", result);
+//!     println!("Result: {result:#?}");
 //!     assert!(result.is_ok());
 //! }
 //! ```
@@ -44,7 +44,11 @@
 //! | Playlists By ID V1 | [`get_playlist_by_id_v1`] | [`PlaylistV1`] |
 //! | Shop BR V2 | [`get_shop_br_v2`] [`get_shop_combined_v2`] | [`ShopV2`] |
 //! | Stats V2 | [`get_stats_v2`] [`get_stats_by_account_id_v2`] | [`StatsV2`] |
-//!
+
+use std::collections::HashMap;
+use std::str::FromStr;
+
+use reqwest::Url;
 
 use crate::response_types::aes::{AesKeyFormat, AesV2};
 use crate::response_types::banners::{BannersColorsV1, BannersV1};
@@ -56,9 +60,6 @@ use crate::response_types::playlists::{PlaylistV1, PlaylistsV1};
 use crate::response_types::shop::ShopV2;
 use crate::response_types::stats::{StatsAccountType, StatsImage, StatsTimeWindow, StatsV2};
 use crate::utils::fetch::fetch_endpoint;
-use reqwest::Url;
-use std::collections::HashMap;
-use std::str::FromStr;
 
 pub mod response_types;
 pub mod utils;
@@ -88,7 +89,7 @@ pub async fn get_aes_keys_v2(
     //!     let http_client = reqwest::Client::new();
     //!
     //!     let result = fortnite_api::get_aes_keys_v2(&http_client, Some(AesKeyFormat::Hex)).await;
-    //!     println!("Result: {:#?}", result);
+    //!     println!("Result: {result:#?}");
     //!     assert!(result.is_ok());
     //! }
     //! ```
@@ -124,7 +125,7 @@ pub async fn get_banners_v1(
     //!     let http_client = reqwest::Client::new();
     //!
     //!     let result = fortnite_api::get_banners_v1(&http_client, None).await;
-    //!     println!("Result: {:#?}", result);
+    //!     println!("Result: {result:#?}");
     //!     assert!(result.is_ok());
     //! }
     //! ```
@@ -157,7 +158,7 @@ pub async fn get_banners_colors_v1(
     //!     let http_client = reqwest::Client::new();
     //!
     //!     let result = fortnite_api::get_banners_colors_v1(&http_client).await;
-    //!     println!("Result: {:#?}", result);
+    //!     println!("Result: {result:#?}");
     //!     assert!(result.is_ok());
     //! }
     //! ```
@@ -263,12 +264,12 @@ pub async fn get_cosmetic_by_id_v2(
     //!
     //!     let cosmetic_id = result.unwrap().items.first().unwrap().id.clone();
     //!     let result = fortnite_api::get_cosmetic_by_id_v2(&http_client, &cosmetic_id, None).await;
-    //!     println!("Result: {:#?}", result);
+    //!     println!("Result: {result:#?}");
     //!     assert!(result.is_ok());
     //! }
     //! ```
     let mut url =
-        Url::from_str(format!("https://fortnite-api.com/v2/cosmetics/br/{}", cosmetic_id).as_str())
+        Url::from_str(format!("https://fortnite-api.com/v2/cosmetics/br/{cosmetic_id}").as_str())
             .unwrap();
     if let Some(language) = language {
         url.query_pairs_mut().append_pair("language", language);
@@ -300,7 +301,7 @@ pub async fn get_creatorcode_v2(
     //!     let http_client = reqwest::Client::new();
     //!
     //!     let result = fortnite_api::get_creatorcode_v2(&http_client, "trymacs").await;
-    //!     println!("Result: {:#?}", result);
+    //!     println!("Result: {result:#?}");
     //!     assert!(result.is_ok());
     //! }
     //! ```
@@ -333,7 +334,7 @@ pub async fn get_map_v1(
     //!     let http_client = reqwest::Client::new();
     //!
     //!     let result = fortnite_api::get_map_v1(&http_client, None).await;
-    //!     println!("Result: {:#?}", result);
+    //!     println!("Result: {result:#?}");
     //!     assert!(result.is_ok());
     //! }
     //! ```
@@ -368,7 +369,7 @@ pub async fn get_news_v2(
     //!     let http_client = reqwest::Client::new();
     //!
     //!     let result = fortnite_api::get_news_v2(&http_client, None).await;
-    //!     println!("Result: {:#?}", result);
+    //!     println!("Result: {result:#?}");
     //! }
     //! ```
     let mut url = Url::from_str("https://fortnite-api.com/v2/news").unwrap();
@@ -402,7 +403,7 @@ pub async fn get_news_br_v2(
     //!     let http_client = reqwest::Client::new();
     //!
     //!     let result = fortnite_api::get_news_br_v2(&http_client, None).await;
-    //!     println!("Result: {:#?}", result);
+    //!     println!("Result: {result:#?}");
     //! }
     //! ```
     let mut url = Url::from_str("https://fortnite-api.com/v2/news/br").unwrap();
@@ -436,7 +437,7 @@ pub async fn get_news_stw_v2(
     //!     let http_client = reqwest::Client::new();
     //!
     //!     let result = fortnite_api::get_news_stw_v2(&http_client, None).await;
-    //!     println!("Result: {:#?}", result);
+    //!     println!("Result: {result:#?}");
     //! }
     //! ```
     let mut url = Url::from_str("https://fortnite-api.com/v2/news/stw").unwrap();
@@ -470,7 +471,7 @@ pub async fn get_news_creative_v2(
     //!     let http_client = reqwest::Client::new();
     //!
     //!     let result = fortnite_api::get_news_creative_v2(&http_client, None).await;
-    //!     println!("Result: {:#?}", result);
+    //!     println!("Result: {result:#?}");
     //! }
     //! ```
     let mut url = Url::from_str("https://fortnite-api.com/v2/news/creative").unwrap();
@@ -504,7 +505,7 @@ pub async fn get_playlists_v1(
     //!     let http_client = reqwest::Client::new();
     //!
     //!     let result = fortnite_api::get_playlists_v1(&http_client, None).await;
-    //!     println!("Result: {:#?}", result);
+    //!     println!("Result: {result:#?}");
     //!     assert!(result.is_ok());
     //! }
     //! ```
@@ -540,16 +541,16 @@ pub async fn get_playlist_by_id_v1(
     //!     let http_client = reqwest::Client::new();
     //!
     //!     let result = fortnite_api::get_playlists_v1(&http_client, None).await;
-    //!     println!("Result: {:#?}", result);
+    //!     println!("Result: {result:#?}");
     //!     assert!(result.is_ok());
     //!
     //!     let playlist_id = result.unwrap().first().unwrap().id.clone();
     //!     let result = fortnite_api::get_playlist_by_id_v1(&http_client, &playlist_id, None).await;
-    //!     println!("Result: {:#?}", result);
+    //!     println!("Result: {result:#?}");
     //! }
     //! ```
     let mut url =
-        Url::from_str(format!("https://fortnite-api.com/v1/playlists/{}", playlist_id).as_str())
+        Url::from_str(format!("https://fortnite-api.com/v1/playlists/{playlist_id}").as_str())
             .unwrap();
     if let Some(language) = language {
         url.query_pairs_mut().append_pair("language", language);
@@ -581,7 +582,7 @@ pub async fn get_shop_br_v2(
     //!     let http_client = reqwest::Client::new();
     //!
     //!     let result = fortnite_api::get_shop_br_v2(&http_client, None).await;
-    //!     println!("Result: {:#?}", result);
+    //!     println!("Result: {result:#?}");
     //!     assert!(result.is_ok());
     //! }
     //! ```
@@ -616,7 +617,7 @@ pub async fn get_shop_combined_v2(
     //!     let http_client = reqwest::Client::new();
     //!
     //!     let result = fortnite_api::get_shop_combined_v2(&http_client, None).await;
-    //!     println!("Result: {:#?}", result);
+    //!     println!("Result: {result:#?}");
     //!     assert!(result.is_ok());
     //! }
     //! ```
@@ -666,7 +667,7 @@ pub async fn get_stats_v2(
     //!
     //!     let result =
     //!         fortnite_api::get_stats_v2(&http_client, api_key.clone(), "Test", None, None, None).await;
-    //!     println!("Result: {:#?}", result);
+    //!     println!("Result: {result:#?}");
     //!     assert!(result.is_ok());
     //! }
     //! ```
@@ -732,12 +733,12 @@ pub async fn get_stats_by_account_id_v2(
     //!         None,
     //!     )
     //!     .await;
-    //!     println!("Result: {:#?}", result);
+    //!     println!("Result: {result:#?}");
     //!     assert!(result.is_ok());
     //! }
     //! ```
     let mut url =
-        Url::from_str(format!("https://fortnite-api.com/v2/stats/br/v2/{}", account_id).as_str())
+        Url::from_str(format!("https://fortnite-api.com/v2/stats/br/v2/{account_id}").as_str())
             .unwrap();
     if let Some(time_window) = time_window {
         url.query_pairs_mut()

@@ -1,7 +1,9 @@
-use crate::response_types::cosmetics::CosmeticsV2;
+use std::collections::HashMap;
+
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
+
+use crate::response_types::cosmetics::CosmeticsV2;
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 #[serde(rename_all = "camelCase")]

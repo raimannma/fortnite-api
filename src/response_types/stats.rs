@@ -1,6 +1,7 @@
+use std::fmt::Display;
+
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
-use std::fmt::Display;
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 #[serde(rename_all = "lowercase")]
@@ -11,7 +12,7 @@ pub enum StatsAccountType {
 }
 impl Display for StatsAccountType {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{:?}", self)
+        write!(f, "{self:?}")
     }
 }
 
@@ -23,7 +24,7 @@ pub enum StatsTimeWindow {
 }
 impl Display for StatsTimeWindow {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{:?}", self)
+        write!(f, "{self:?}")
     }
 }
 
@@ -38,7 +39,7 @@ pub enum StatsImage {
 }
 impl Display for StatsImage {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{:?}", self)
+        write!(f, "{self:?}")
     }
 }
 

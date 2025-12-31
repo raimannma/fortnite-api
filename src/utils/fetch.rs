@@ -1,8 +1,9 @@
+use std::collections::HashMap;
+use std::str::FromStr;
+
 use reqwest::{RequestBuilder, Url};
 use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
-use std::str::FromStr;
 
 #[derive(Serialize, Deserialize, Debug, Clone, Eq, PartialEq, Hash)]
 #[serde(rename_all = "camelCase")]

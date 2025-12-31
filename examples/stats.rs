@@ -9,7 +9,7 @@ async fn main() {
 
     let result =
         fortnite_api::get_stats_v2(&http_client, api_key.clone(), "Test", None, None, None).await;
-    println!("Result: {:#?}", result);
+    println!("Result: {result:#?}");
     assert!(result.is_ok());
 
     let result = fortnite_api::get_stats_v2(
@@ -21,7 +21,7 @@ async fn main() {
         None,
     )
     .await;
-    println!("Result: {:#?}", result);
+    println!("Result: {result:#?}");
     assert!(result.is_ok());
 
     let result = fortnite_api::get_stats_v2(
@@ -33,7 +33,7 @@ async fn main() {
         None,
     )
     .await;
-    println!("Result: {:#?}", result);
+    println!("Result: {result:#?}");
     assert!(result.is_ok());
 
     let result = fortnite_api::get_stats_v2(
@@ -45,7 +45,7 @@ async fn main() {
         Some(StatsImage::All),
     )
     .await;
-    println!("Result: {:#?}", result);
+    println!("Result: {result:#?}");
     assert!(result.is_ok());
 
     let result = fortnite_api::get_stats_by_account_id_v2(
@@ -56,7 +56,7 @@ async fn main() {
         None,
     )
     .await;
-    println!("Result: {:#?}", result);
+    println!("Result: {result:#?}");
     assert!(result.is_ok());
 
     let result = fortnite_api::get_stats_by_account_id_v2(
@@ -67,7 +67,7 @@ async fn main() {
         None,
     )
     .await;
-    println!("Result: {:#?}", result);
+    println!("Result: {result:#?}");
     assert!(result.is_ok());
 
     let result = fortnite_api::get_stats_by_account_id_v2(
@@ -78,6 +78,6 @@ async fn main() {
         None,
     )
     .await;
-    println!("Result: {:#?}", result);
+    println!("Result: {result:#?}");
     assert!(result.is_ok());
 }

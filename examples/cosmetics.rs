@@ -10,6 +10,6 @@ async fn main() {
 
     let cosmetic_id = result.unwrap().items.first().unwrap().id.clone();
     let result = fortnite_api::get_cosmetic_by_id_v2(&http_client, &cosmetic_id, None).await;
-    println!("Result: {:#?}", result);
+    println!("Result: {result:#?}");
     assert!(result.is_ok());
 }
